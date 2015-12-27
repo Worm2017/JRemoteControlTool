@@ -27,6 +27,8 @@ public class ClientGUI extends JFrame {
     public ClientGUI(){
         InitializeGUI();
         setWindowPrefs();
+        // simulate doClick()
+        menuStartListen.doClick();
     }
 
     private void InitializeGUI() {
@@ -75,12 +77,13 @@ public class ClientGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        try{
+        /*try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             new ClientGUI();
         }catch (Exception e){
             e.printStackTrace();
             System.exit(-1);
-        }
+        } */
+        new ClientGUI();
     }
 }

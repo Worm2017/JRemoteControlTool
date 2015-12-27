@@ -136,8 +136,12 @@ public class ServerGUI extends JFrame {
         console.append(text + System.lineSeparator());
     }
 
+    public String getTryIp(){
+        return txtConnectionIP.getText();
+    }
+
     public static void main(String[] args) {
-        try {
+        /*try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             new ServerGUI();
         } catch (ClassNotFoundException e) {
@@ -148,6 +152,7 @@ public class ServerGUI extends JFrame {
             e.printStackTrace();
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
-        }
+        }*/
+        new ServerGUI();
     }
 }

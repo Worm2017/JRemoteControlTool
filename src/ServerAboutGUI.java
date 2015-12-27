@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
  */
 public class ServerAboutGUI extends JDialog {
 
-    public ServerAboutGUI(){
+    public ServerAboutGUI(ServerGUI gui){
         InitializeGUI();
-        setWindowPrefs();
+        setWindowPrefs(gui);
     }
 
     private void InitializeGUI() {
@@ -35,13 +35,13 @@ public class ServerAboutGUI extends JDialog {
         getContentPane().add(btn, BorderLayout.SOUTH);
     }
 
-    private void setWindowPrefs() {
+    private void setWindowPrefs(ServerGUI gui) {
         // set window preferences
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         setTitle("Remote Control Tool - About");
         pack();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(gui);
         setModal(true);
         setVisible(true);
     }
