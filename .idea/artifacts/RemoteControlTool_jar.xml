@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="RemoteControlTool:jar">
-    <output-path>$PROJECT_DIR$/RemoteControlTool_jar</output-path>
+    <output-path>$USER_HOME$/Desktop</output-path>
     <root id="archive" name="RemoteControlTool.jar">
       <element id="module-output" name="RemoteControlTool" />
     </root>

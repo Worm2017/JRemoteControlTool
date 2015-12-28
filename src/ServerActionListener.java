@@ -28,10 +28,12 @@ public class ServerActionListener implements ActionListener {
         if(e.getSource() == serverGUI.btnConnect){
             try {
                 serverGUI.LogInformation("Trying connect to: " + serverGUI.txtConnectionIP.getText());
-                serverConnection = new ServerConnection(serverGUI.txtConnectionIP.getText());
+                serverConnection = new ServerConnection(serverGUI.txtConnectionIP.getText(), serverGUI);
                 serverGUI.LogInformation("Status: " + serverConnection.getConnectionStatus() + " ;IP=" +
                         serverConnection.getIp() + " (" + serverConnection.getConnectionAddress() + ")");
                 serverGUI.btnConnect.setEnabled(false);
+
+                new Thread(serverConnection).start();
             }catch (Exception ex){
                 JOptionPane.showMessageDialog(serverGUI, "Could not connect to given address!", "Error while connecting",
                         JOptionPane.ERROR_MESSAGE);
@@ -62,7 +64,7 @@ public class ServerActionListener implements ActionListener {
     private void CleanAndAddToHistory() {
         String oldCMD = serverGUI.txtCommandLine.getText();
         serverGUI.txtCommandLine.setText("");
-        serverGUI.cmdHistory.append(System.lineSeparator() + "You: " + oldCMD);
+        serverGUI.cmdHistory.append(System.lineSeparator() + "You: " + oldCMD + System.lineSeparator());
     }
 
     public void ExecuteCommand(String cmd, boolean message){

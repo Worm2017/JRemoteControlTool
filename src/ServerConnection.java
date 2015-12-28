@@ -1,23 +1,25 @@
 import javax.swing.*;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.Socket;
 
 /**
  * Created by R3DST0RM on 26.08.2014.
  */
-public class ServerConnection {
+public class ServerConnection implements Runnable{
     private String ip;
     private Socket connection;
     private InputStreamReader streamReader;
     private OutputStreamWriter streamWriter;
+    private BufferedReader bufStreamReader;
+    private ServerGUI serverGUI;
 
-    public ServerConnection(String ip) throws Exception{
+    public ServerConnection(String ip, ServerGUI serverGUI) throws Exception{
         this.ip = ip;
+        this.serverGUI = serverGUI;
         connection = new Socket(this.ip, 5555);
         streamReader = new InputStreamReader(connection.getInputStream());
         streamWriter = new OutputStreamWriter(connection.getOutputStream());
+        bufStreamReader = new BufferedReader(streamReader);
     }
 
     public String getIp() {
@@ -41,5 +43,17 @@ public class ServerConnection {
 
     public String getConnectionAddress() {
         return connection.getRemoteSocketAddress().toString();
+    }
+
+    @Override
+    public void run() {
+        try{
+            String line = "";
+            while((line = bufStreamReader.readLine()) != null){
+                serverGUI.LogRemoteAnswer(line);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

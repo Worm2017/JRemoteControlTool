@@ -132,9 +132,9 @@ public class ServerGUI extends JFrame {
         setVisible(true);
     }
 
-    public void LogInformation(String text){
-        console.append(text + System.lineSeparator());
-    }
+    public void LogInformation(String text){ console.append(text + System.lineSeparator()); }
+
+    public void LogRemoteAnswer(String text){ cmdHistory.append("Partner: " + text + System.lineSeparator()); }
 
     public String getTryIp(){
         return txtConnectionIP.getText();
