@@ -132,8 +132,16 @@ public class ServerGUI extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Logs the information what happened in every function (more likely dev logs)
+     * @param text log text
+     */
     public void LogInformation(String text){ console.append(text + System.lineSeparator()); }
 
+    /**
+     * Logs the command history client/server server/client like a chat
+     * @param text answer from the client what happened or what the client did
+     */
     public void LogRemoteAnswer(String text){ cmdHistory.append("Partner: " + text + System.lineSeparator()); }
 
     public String getTryIp(){

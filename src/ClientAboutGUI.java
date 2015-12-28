@@ -4,7 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by R3DST0RM on 27.08.2014.
+ * ClientAboutGUI creates a new window and shows some information about the program
+ *
+ * @author R3DST0RM
+ * @version 0.1
  */
 public class ClientAboutGUI extends JDialog {
 

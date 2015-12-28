@@ -6,7 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * Created by R3DST0RM on 27.08.2014.
+ * This class defines the ClientGUI
+ *
+ * @author R3DST0RM
+ * @version 0.1
  */
 public class ClientGUI extends JFrame {
     private ClientActionListener actionListener;
@@ -24,6 +27,10 @@ public class ClientGUI extends JFrame {
     // Console Logging
     JTextArea console = new JTextArea("Welcome, you are using Remote Control Tool...");
 
+    /**
+     * Creates a new ClientGUI
+     * @param hidden Defines whether this gui is shown or hidden (true - window is hidden)
+     */
     public ClientGUI(boolean hidden){
         InitializeGUI();
         setWindowPrefs();
@@ -72,6 +79,10 @@ public class ClientGUI extends JFrame {
         //setVisible(true);
     }
 
+    /**
+     * Prints a text to the console defined
+     * @param text Text to be displayed
+     */
     public void LogInformation(String text){
         Calendar now = Calendar.getInstance();
         console.append(System.lineSeparator() + "[" + dateFormat.format(now.getTime()) + "]: " + text);

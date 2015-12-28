@@ -67,6 +67,12 @@ public class ServerActionListener implements ActionListener {
         serverGUI.cmdHistory.append(System.lineSeparator() + "You: " + oldCMD + System.lineSeparator());
     }
 
+    /**
+     * ExecuteCommand logs whether a command was executed or not by the client
+     * @param cmd command which should be executed by the client
+     * @param message boolean value if message is a command or a message
+     * @deprecated This method needs a review! (There is no alternative!)
+     */
     public void ExecuteCommand(String cmd, boolean message){
         boolean cmdExecuted = serverConnection.ExecuteCommand(cmd);
         if(!message) {

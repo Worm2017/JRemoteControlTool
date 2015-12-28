@@ -8,6 +8,10 @@ public class ClientActionListener implements ActionListener {
     private ClientGUI clientGUI;
     private ClientConnection clientConnection;
 
+    /**
+     * Creates a new action listener regarding the client gui
+     * @param clientGUI Pass a valid client gui handle
+     */
     public ClientActionListener(ClientGUI clientGUI){
         this.clientGUI = clientGUI;
     }

@@ -10,6 +10,10 @@ public class ClientConnection extends Thread{
     private ClientGUI clientGUI;
     private ServerSocket server;
 
+    /**
+     * ClientConnection manages the connections incoming for every new connection there is a new thread
+     * @param clientGUI Pass a valid client gui handle
+     */
     public ClientConnection(ClientGUI clientGUI){
         this.clientGUI = clientGUI;
         clientGUI.LogInformation("Server successfully initialized!");
@@ -40,6 +44,11 @@ class ConnectionHandler implements Runnable{
     private BufferedWriter streamWriter;
     private ClientGUI clientGUI;
 
+    /**
+     * ConnectionHandler is a sub class of ClientConnection
+     * @param socket incoming connection socket
+     * @param clientGUI ClientGUI handle
+     */
     public ConnectionHandler(Socket socket, ClientGUI clientGUI) {
         try {
             this.clientGUI = clientGUI;
@@ -78,6 +87,11 @@ class ConnectionHandler implements Runnable{
         }
     }
 
+    /**
+     * Sends message back to the host which is connected
+     * @param message Message send back to the host
+     * @throws Exception The exception occurs when a host is disconnected and this routine is called.
+     */
     public void SendMessage(String message) throws Exception{
         streamWriter.write(message + "\n");
         streamWriter.flush();

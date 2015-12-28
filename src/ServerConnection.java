@@ -22,14 +22,27 @@ public class ServerConnection implements Runnable{
         bufStreamReader = new BufferedReader(streamReader);
     }
 
+    /**
+     *
+     * @return Returns the IP where the user wants to connect to
+     */
     public String getIp() {
         return ip;
     }
 
+    /**
+     *
+     * @return returns true if ServerGUI is connected to a client otherwise false
+     */
     public boolean getConnectionStatus(){
         return connection.isConnected();
     }
 
+    /**
+     * Sends a command/message to the client where its connected
+     * @param cmd command string which will be sent
+     * @return returns true if there was no error otherwise false
+     */
     public boolean ExecuteCommand(String cmd){
         try {
             streamWriter.write(cmd + "\n");
@@ -41,6 +54,10 @@ public class ServerConnection implements Runnable{
         }
     }
 
+    /**
+     *
+     * @return returns the remote socket address
+     */
     public String getConnectionAddress() {
         return connection.getRemoteSocketAddress().toString();
     }
