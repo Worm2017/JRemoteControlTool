@@ -12,8 +12,14 @@ public class ServerGUI extends JFrame {
     JMenuItem menuExit = new JMenuItem("Exit");
     JMenu menuRemoteCtrl = new JMenu("Remote Ctrl");
     JMenu menuWindowsCtrl = new JMenu("Windows");           // submenu
+    JMenuItem menuWindowsCtrlShowDriveLetters = new JMenuItem("Show available drive letters");
+    JMenuItem menuWindowsCtrlShowDirectoryContent = new JMenuItem("List content in directory");
+    JMenuItem menuWindowsCtrlDeleteDirectory = new JMenuItem("Delete directory");
+
     JMenu menuLinuxCtrl = new JMenu("Linux");               // submenu
+
     JMenu menuProgrammCtrl = new JMenu("Programm Ctrl");    // submenu
+
     JMenu menuTools = new JMenu("Tools");
     JMenu menuSettings = new JMenu("Settings");
     JMenu menuAbout = new JMenu("?");
@@ -47,6 +53,12 @@ public class ServerGUI extends JFrame {
         menuFile.add(menuExit);
         menu.add(menuRemoteCtrl);
         menuRemoteCtrl.add(menuWindowsCtrl);
+        menuWindowsCtrl.add(menuWindowsCtrlShowDriveLetters);
+        menuWindowsCtrlShowDriveLetters.addActionListener(actionListener);
+        menuWindowsCtrl.add(menuWindowsCtrlShowDirectoryContent);
+        menuWindowsCtrlShowDirectoryContent.addActionListener(actionListener);
+        menuWindowsCtrl.add(menuWindowsCtrlDeleteDirectory);
+        menuWindowsCtrlDeleteDirectory.addActionListener(actionListener);
         menuRemoteCtrl.add(menuLinuxCtrl);
         menuRemoteCtrl.add(menuProgrammCtrl);
         menu.add(menuTools);
@@ -162,5 +174,17 @@ public class ServerGUI extends JFrame {
             e.printStackTrace();
         }*/
         new ServerGUI();
+    }
+
+    /**
+     * Inserts command into the gui command line
+     * @param s Command that should be inserted
+     * @param startSelection Value where selection should be started
+     * @param endSelection Value where selection ends
+     */
+    public void InsertCommand(String s, int startSelection, int endSelection) {
+        txtCommandLine.setText(s);
+        txtCommandLine.requestFocusInWindow();
+        txtCommandLine.select(startSelection, endSelection);
     }
 }

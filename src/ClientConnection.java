@@ -87,7 +87,9 @@ class ConnectionHandler implements Runnable{
                         int retVal = proc.waitFor();
                         if(retVal != 0){ SendMessage("Error while executing your process!"); }
 
-                    }else {
+                    }else if(line.startsWith("view-output")){
+                        line = line.replace("view-output ", "").replace("view-output", "");
+
                         ProcessBuilder pb = new ProcessBuilder(line);
                         Process proc = pb.start();
                         InputStream inputStream = proc.getInputStream();
@@ -100,9 +102,11 @@ class ConnectionHandler implements Runnable{
                         SendMessage("###### Command output #####");
                         int retVal = proc.waitFor();
                         if(retVal != 0){ SendMessage("Error while executing your process!"); }
-                        //Runtime.getRuntime().exec(line);
+                    }
+                    else {
+                        Runtime.getRuntime().exec(line);
                         clientGUI.LogInformation(line);
-                        //SendMessage("Executed: " + line);
+                        SendMessage("Executed: " + line);
                     }
                 }
             }

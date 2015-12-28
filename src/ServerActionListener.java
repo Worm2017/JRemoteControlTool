@@ -25,6 +25,18 @@ public class ServerActionListener implements ActionListener {
             new ServerAboutGUI(serverGUI);
         }
 
+        if(e.getSource() == serverGUI.menuWindowsCtrlShowDriveLetters){
+            serverGUI.InsertCommand("cmd fsutil fsinfo drives", 0, 0);
+        }
+
+        if(e.getSource() == serverGUI.menuWindowsCtrlShowDirectoryContent){
+            serverGUI.InsertCommand("cmd cd {DIRECTORY} && dir", 7, 18);
+        }
+
+        if(e.getSource() == serverGUI.menuWindowsCtrlDeleteDirectory){
+            serverGUI.InsertCommand("cmd rd /s /q {DIRECTORY}", 13, 24);
+        }
+
         if(e.getSource() == serverGUI.btnConnect){
             try {
                 serverGUI.LogInformation("Trying connect to: " + serverGUI.txtConnectionIP.getText());
