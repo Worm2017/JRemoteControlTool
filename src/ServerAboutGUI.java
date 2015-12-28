@@ -20,7 +20,7 @@ public class ServerAboutGUI extends JDialog {
         getContentPane().add(new JLabel("<html><h1>About Remote Control Tool</h1>" +
                 "<br />" +
                 "<p>Remote Control Tool allows you to control your pc remotely.<br />" +
-                "It's completely written in Java by Dominik Schwarzbauer.<br />" +
+                "It's completely written in Java by R3DST0RM.<br />" +
                 "There's no screen recorder and stream to the server panel.<br />" +
                 "It's intention is to control your pc through commandline just to keep it easy.<br />" +
                 "There's no warranty for any damage that tool may cause.<br />" +

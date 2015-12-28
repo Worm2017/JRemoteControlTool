@@ -72,16 +72,44 @@ class ConnectionHandler implements Runnable{
                     if(line.equals("cmd") || line.equals("cmd.exe") || line.equals("command.com")){
                         Runtime.getRuntime().exec("cmd /c start");
                         SendMessage("Executed: cmd /c start");
+                    }else if(line.contains("cmd")) {
+                        line = line.replace("cmd ", "").replace("cmd", "").replace("cmd.exe", "").replace("cmd.exe ", "");
+                        ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", line);
+                        Process proc = pb.start();
+                        InputStream inputStream = proc.getInputStream();
+                        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+                        String output = null;
+                        SendMessage("###### Command output #####");
+                        while((output = br.readLine()) != null){
+                            SendMessage(output);
+                        }
+                        SendMessage("###### Command output #####");
+                        int retVal = proc.waitFor();
+                        if(retVal != 0){ SendMessage("Error while executing your process!"); }
+
                     }else {
-                        Runtime.getRuntime().exec(line);
+                        ProcessBuilder pb = new ProcessBuilder(line);
+                        Process proc = pb.start();
+                        InputStream inputStream = proc.getInputStream();
+                        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+                        String output = null;
+                        SendMessage("###### Command output #####");
+                        while((output = br.readLine()) != null){
+                            SendMessage(output);
+                        }
+                        SendMessage("###### Command output #####");
+                        int retVal = proc.waitFor();
+                        if(retVal != 0){ SendMessage("Error while executing your process!"); }
+                        //Runtime.getRuntime().exec(line);
                         clientGUI.LogInformation(line);
-                        SendMessage("Executed: " + line);
+                        //SendMessage("Executed: " + line);
                     }
                 }
             }
         }catch (Exception e){
             //JOptionPane.showMessageDialog(clientGUI, "There was a error communicating with the remote control",
               //      "Error while communicating", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
             System.err.println("Host disconnected?");
             clientGUI.LogInformation("Remote Host disconnected!");
         }
