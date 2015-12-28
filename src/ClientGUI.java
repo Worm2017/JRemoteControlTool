@@ -24,10 +24,11 @@ public class ClientGUI extends JFrame {
     // Console Logging
     JTextArea console = new JTextArea("Welcome, you are using Remote Control Tool...");
 
-    public ClientGUI(){
+    public ClientGUI(boolean hidden){
         InitializeGUI();
         setWindowPrefs();
         // simulate doClick()
+        setVisible(!hidden);
         menuStartListen.doClick();
     }
 
@@ -68,7 +69,7 @@ public class ClientGUI extends JFrame {
         setTitle("Remote Control Tool - Client");
         setSize(new Dimension(500,400));
         setLocationRelativeTo(null);
-        setVisible(true);
+        //setVisible(true);
     }
 
     public void LogInformation(String text){
@@ -84,6 +85,11 @@ public class ClientGUI extends JFrame {
             e.printStackTrace();
             System.exit(-1);
         } */
-        new ClientGUI();
+        boolean hidden = false;
+        for (int i = 0; i < args.length; i++) {
+            if(args[i].contains("hidden") || args[i].contains("nogui"))
+                hidden = true;
+        }
+        new ClientGUI(hidden);
     }
 }
