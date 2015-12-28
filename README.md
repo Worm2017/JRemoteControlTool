@@ -1,7 +1,9 @@
 # JRemoteControlTool
-This tool allows you to simply control your computers at home via external use or at home if you are too lazy to stand up to take a look what happened.
+This tool mostly designed to control your pcs on your local network at home, since there is currently no encryption provided.
 
-The goal of this tool is to stay lightweight, therefore this tool is mostly using a terminal like control.
+I am looking forward to make sure the transfer of data will be secured.
+
+The goal of this tool is to stay lightweight, therefore this tool is mostly using a terminal like control - for personal purposes to control a pc on your local network for example if you have to help a family member which is on 1st floor while you are sitting on the 2nd floor in front of your pc.
 
 ## Usage
 This tool is still under development and yet there is no (usable/released) version available.
