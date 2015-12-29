@@ -19,6 +19,7 @@ public class ServerGUI extends JFrame {
     JMenu menuLinuxCtrl = new JMenu("Linux");               // submenu
 
     JMenu menuProgrammCtrl = new JMenu("Programm Ctrl");    // submenu
+    JMenuItem menuProgrammCtrlGetOS = new JMenuItem("Get OS of client");
 
     JMenu menuTools = new JMenu("Tools");
     JMenu menuSettings = new JMenu("Settings");
@@ -53,14 +54,20 @@ public class ServerGUI extends JFrame {
         menuFile.add(menuExit);
         menu.add(menuRemoteCtrl);
         menuRemoteCtrl.add(menuWindowsCtrl);
+
         menuWindowsCtrl.add(menuWindowsCtrlShowDriveLetters);
         menuWindowsCtrlShowDriveLetters.addActionListener(actionListener);
         menuWindowsCtrl.add(menuWindowsCtrlShowDirectoryContent);
         menuWindowsCtrlShowDirectoryContent.addActionListener(actionListener);
         menuWindowsCtrl.add(menuWindowsCtrlDeleteDirectory);
         menuWindowsCtrlDeleteDirectory.addActionListener(actionListener);
+
         menuRemoteCtrl.add(menuLinuxCtrl);
+
         menuRemoteCtrl.add(menuProgrammCtrl);
+        menuProgrammCtrl.add(menuProgrammCtrlGetOS);
+        menuProgrammCtrlGetOS.addActionListener(actionListener);
+
         menu.add(menuTools);
         menu.add(menuSettings);
         menu.add(menuAbout);
